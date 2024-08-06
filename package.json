@@ -4,7 +4,7 @@
   "private": true,
   "author": {
     "name": "Kiran",
-    "url": "https://github.com/Kiranism"
+    "url": "https://github.com/sahillather002"
   },
   "scripts": {
     "dev": "next dev",
@@ -41,12 +41,14 @@
     "@types/react-dom": "18.2.7",
     "@uploadthing/react": "^5.7.0",
     "autoprefixer": "10.4.15",
+    "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "date-fns": "^2.30.0",
     "eslint": "8.48.0",
     "eslint-config-next": "^14.0.1",
+    "jose": "^5.6.3",
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.291.0",
     "mongoose": "^8.5.2",
@@ -54,11 +56,14 @@
     "next-auth": "^5.0.0-beta.18",
     "next-themes": "^0.2.1",
     "nextjs-toploader": "^1.6.12",
+    "nodemailer": "^6.9.14",
+    "nookies": "^2.5.2",
     "postcss": "8.4.28",
     "react": "^18.2.0",
     "react-day-picker": "^8.9.1",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.47.0",
+    "react-toastify": "^10.0.5",
     "recharts": "^2.12.7",
     "sharp": "^0.32.5",
     "tailwind-merge": "^1.14.0",
@@ -70,9 +75,11 @@
     "zustand": "^4.4.6"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/bcryptjs": "^2.4.6",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^22.1.0",
+    "@types/nodemailer": "^6.4.15",
     "@types/uuid": "^9.0.7",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
     "typescript": "^5.5.4"

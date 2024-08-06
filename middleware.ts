@@ -1,17 +1,28 @@
-// Protecting routes with next-auth
-// https://next-auth.js.org/configuration/nextjs#middleware
-// https://nextjs.org/docs/app/building-your-application/routing/middleware
+import { NextResponse, NextRequest } from 'next/server';
+import { jwtVerify } from 'jose';
 
-import NextAuth from 'next-auth';
-import authConfig from './auth.config';
+export async function middleware(req: NextRequest) {
+  const token = req.cookies.get('auth_token')?.value; // Adjust based on your cookie handling method
 
-const { auth } = NextAuth(authConfig);
-
-export default auth((req) => {
-  if (!req.auth) {
-    const url = req.url.replace(req.nextUrl.pathname, '/');
-    return Response.redirect(url);
+  if (!token) {
+    // No token present, redirect to login
+    const url = new URL('/login', req.url);
+    return NextResponse.redirect(url);
   }
-});
 
-export const config = { matcher: ['/dashboard/:path*'] };
+  try {
+    // Verify the token using jose
+    await jwtVerify(token, new TextEncoder().encode(process.env.JWT_SECRET as string));
+  } catch (error) {
+    console.error('Token verification failed:', error);
+    // Token is invalid or expired, redirect to login
+    const url = new URL('/login', req.url);
+    return NextResponse.redirect(url);
+  }
+
+  return NextResponse.next();
+}
+
+export const config = {
+  matcher: ['/dashboard/:path*'], // Protect routes under /dashboard
+};
