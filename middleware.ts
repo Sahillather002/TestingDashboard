@@ -6,7 +6,7 @@ export async function middleware(req: NextRequest) {
 
   if (!token) {
     // No token present, redirect to login
-    const url = new URL('/login', req.url);
+    const url = new URL('/', req.url);
     return NextResponse.redirect(url);
   }
 
@@ -16,7 +16,7 @@ export async function middleware(req: NextRequest) {
   } catch (error) {
     console.error('Token verification failed:', error);
     // Token is invalid or expired, redirect to login
-    const url = new URL('/login', req.url);
+    const url = new URL('/', req.url);
     return NextResponse.redirect(url);
   }
 

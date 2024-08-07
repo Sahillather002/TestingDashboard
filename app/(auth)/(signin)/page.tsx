@@ -6,15 +6,20 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
+import { useRouter } from 'next/navigation';
+import Loader from '@/components/loader';
 
 export default function AuthenticationPage() {
+  const router = useRouter();
   const [isLogin, setIsLogin] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
 
     const endpoint = isLogin ? '/api/login' : '/api/register';
     const response = await fetch(endpoint, {
@@ -27,16 +32,18 @@ export default function AuthenticationPage() {
 
     if (response.ok) {
       toast.success(isLogin ? 'User logged in successfully' : 'User registered successfully');
+      router.push("/dashboard");
     } else {
       setError(data.error || 'Something went wrong');
       toast.error(data.error || 'Something went wrong');
     }
+    setLoading(false);
   };
 
   return (
     <>
     <ToastContainer />
-    
+    {loading && <Loader/>}
     <div className="relative h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
       
       <Link
@@ -77,7 +84,7 @@ export default function AuthenticationPage() {
           </div>
           <form onSubmit={handleSubmit} className="space-y-4">
             <label className="block">
-              <span className="block text-sm font-medium text-gray-700">
+              <span className="block text-sm font-medium text-white">
                 Email:
               </span>
               <input
@@ -89,7 +96,7 @@ export default function AuthenticationPage() {
               />
             </label>
             <label className="block">
-              <span className="block text-sm font-medium text-gray-700">
+              <span className="block text-sm font-medium text-white">
                 Password:
               </span>
               <input

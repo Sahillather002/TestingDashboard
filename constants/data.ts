@@ -140,11 +140,5 @@ export const navItems: NavItem[] = [
     href: '/dashboard/kanban',
     icon: 'kanban',
     label: 'kanban'
-  },
-  {
-    title: 'Login',
-    href: '/',
-    icon: 'login',
-    label: 'login'
   }
 ];
