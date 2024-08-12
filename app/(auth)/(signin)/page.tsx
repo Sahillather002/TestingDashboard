@@ -118,7 +118,7 @@ export default function AuthenticationPage() {
           <p className="px-8 text-center text-sm text-muted-foreground">
             {isLogin ? (
               <>
-                Don't have an account?{' '}
+                Dont have an account?{' '}
                 <button
                   onClick={() => setIsLogin(false)}
                   className="underline underline-offset-4 hover:text-primary"

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "author": {
-    "name": "Kiran",
+    "name": "Sahil",
     "url": "https://github.com/sahillather002"
   },
   "scripts": {
@@ -78,6 +78,7 @@
     "@types/bcrypt": "^5.0.2",
     "@types/bcryptjs": "^2.4.6",
     "@types/jsonwebtoken": "^9.0.6",
+    "@types/next": "^9.0.0",
     "@types/node": "^22.1.0",
     "@types/nodemailer": "^6.4.15",
     "@types/uuid": "^9.0.7",
